@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#133a30">
+  <title>KakoBuy spreadsheet | Product Finds & Buying Checklist</title>
+  <meta name="description" content="Browse KakoBuy spreadsheet finds sourced from HipoBuyFind. Filter shoes, hoodies, tees and jackets, then check listing details, QC photos and shipping costs.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="KakoBuy spreadsheet | Product Finds & Buying Checklist">
+  <meta property="og:description" content="Compare HipoBuyFind listings and work through a practical sizing, QC and shipping checklist before ordering.">
+  <!--
+    File: index.html
+    Search research: spreadsheetkakobuy.com offers category search, CNY prices
+    and QC counts. spreadsheet-kakobuy.com offers listing checks and shipping
+    guides. This page adds a lightweight, crawlable catalog with source listing
+    links, a mobile-friendly filter, and a plain-language cost checklist.
+    These pages were reviewed from web search results; exact Google first-page
+    positions were not independently confirmed.
+    Catalog source: https://hipobuyfind.com/
+    Indexing status: pending. The public URL for this new page was not supplied.
+    After deployment, add a canonical URL pointing to this page's own public
+    address. Submit that URL using Google Search Console's URL Inspection and
+    Bing Webmaster Tools' URL Submission on the verified site.
+    Google: https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl
+    Bing: https://www.bing.com/webmasters/help/URL-Submission-62f2860b
+  -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "KakoBuy spreadsheet",
+    "description": "An independent product catalog preview sourced from HipoBuyFind, with a checklist for sizing, quality-control photos and shipping costs.",
+    "inLanguage": "en",
+    "mainEntity": {
+      "@type": "ItemList",
+      "numberOfItems": 4,
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Black Canvas Low-Top Sneakers with Gum Sole", "url": "https://hipobuyfind.com/goods-148188.html"},
+        {"@type": "ListItem", "position": 2, "name": "Gray Hooded Hoodie", "url": "https://hipobuyfind.com/goods-154936.html"},
+        {"@type": "ListItem", "position": 3, "name": "Graphic Short-Sleeve T-Shirt", "url": "https://hipobuyfind.com/goods-154920.html"},
+        {"@type": "ListItem", "position": 4, "name": "Hooded Quick-Dry Jacket", "url": "https://hipobuyfind.com/goods-154851.html"}
+      ]
+    }
+  }
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f6f5ee;
+      --white: #fffef9;
+      --ink: #172c25;
+      --muted: #4b6359;
+      --green: #133a30;
+      --lime: #e4f69d;
+      --line: #ccd7cc;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 1rem/1.6 system-ui, sans-serif;
+    }
+    a { color: inherit; }
+    :focus-visible { outline: 3px solid #687c26; outline-offset: 4px; }
+    .wrap { width: min(70rem, calc(100% - 2rem)); margin-inline: auto; }
+    .skip { position: absolute; left: 1rem; top: 1rem; background: white; padding: .6rem; }
+    .skip:not(:focus) { clip-path: inset(50%); }
+    .nav, .actions, .filters {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: .75rem 1.25rem;
+    }
+    .nav { justify-content: space-between; padding-block: 1rem; }
+    .nav a { font-weight: 650; text-underline-offset: .2em; }
+    .hero {
+      padding: clamp(3rem, 9vw, 7rem) 1rem;
+      border-radius: 1.75rem;
+      background: radial-gradient(ellipse at 85% 0%, #2f6050, var(--green) 65%);
+      color: var(--white);
+      text-align: center;
+    }
+    h1, h2, h3, p { margin: 0; }
+    h1, h2 { font-family: Georgia, serif; font-weight: 500; line-height: 1.06; }
+    h1 { font-size: clamp(2.7rem, 9vw, 6rem); letter-spacing: -.055em; }
+    h2 { font-size: clamp(2rem, 5vw, 3.25rem); letter-spacing: -.04em; }
+    .hero p { max-width: 40rem; margin: 1rem auto 1.5rem; color: #edf3e9; }
+    .actions { justify-content: center; }
+    .button {
+      display: inline-block;
+      padding: .65rem 1.15rem;
+      border: 1px solid var(--lime);
+      border-radius: 2rem;
+      background: var(--lime);
+      color: var(--green);
+      font-weight: 750;
+      text-decoration: none;
+    }
+    .button.alt { background: transparent; color: var(--white); border-color: #b7cbbd; }
+    .hero a:focus-visible { outline-color: white; }
+    section { padding-block: clamp(2.25rem, 6vw, 4rem); }
+    section > p { margin-top: .75rem; color: var(--muted); }
+    .filters {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      margin-top: 1.4rem;
+    }
+    label { display: grid; gap: .25rem; font-weight: 650; }
+    input, select {
+      width: 100%;
+      min-height: 2.75rem;
+      padding: .55rem .7rem;
+      border: 1px solid #82968a;
+      border-radius: .5rem;
+      background: var(--white);
+      color: var(--ink);
+      font: inherit;
+    }
+    .results { margin: .65rem 0; color: var(--muted); }
+    .catalog {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+      gap: .8rem;
+      margin-top: 1rem;
+    }
+    .card {
+      display: grid;
+      grid-template-rows: auto 1fr auto auto;
+      gap: .65rem;
+      padding: 1.1rem;
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+      background: var(--white);
+    }
+    .category { font-size: .85rem; color: var(--muted); }
+    .card h3 { font-size: 1.05rem; line-height: 1.35; }
+    .price { font-weight: 750; font-variant-numeric: tabular-nums; }
+    .card a { font-weight: 650; text-underline-offset: .2em; }
+    .guide { border-top: 1px solid var(--line); }
+    .guide ol { display: grid; gap: .75rem; max-width: 49rem; padding-left: 1.5rem; }
+    details { border-top: 1px solid var(--line); padding-block: .85rem; }
+    details:last-child { border-bottom: 1px solid var(--line); }
+    summary { cursor: pointer; font-weight: 700; }
+    details p { max-width: 49rem; padding: .5rem 0 0 1.1rem; color: var(--muted); }
+    footer { padding-block: 1.5rem 2.5rem; color: var(--muted); font-size: .9rem; }
+    @media (max-width: 34rem) {
+      .filters { grid-template-columns: 1fr; }
+    }
+  </style>
+<link rel="canonical" href="https://kakobuyfinds.github.io/pbone/">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="wrap">
+    <nav class="nav" aria-label="Page navigation">
+      <a href="#catalog">Product catalog</a>
+      <a href="#checklist">Buying checklist</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </header>
+
+  <main id="main" class="wrap">
+    <div class="hero">
+      <h1>KakoBuy spreadsheet</h1>
+      <p>Browse a selection of HipoBuyFind listings, compare item prices in yuan, and check sizing, photos and shipping before you buy.</p>
+      <div class="actions">
+        <a class="button" href="https://hipobuyfind.com/">KakoBuy spreadsheet</a>
+        <a class="button alt" href="https://hipobuyfind.com/">Buy it now</a>
+      </div>
+    </div>
+
+    <section id="catalog" aria-labelledby="catalog-title">
+      <h2 id="catalog-title">Product catalog</h2>
+      <p>Selected listings from the HipoBuyFind catalog, checked on <time datetime="2026-11-18">November 18, 2026</time>. Reference prices are item prices in CNY. Open the source listing for current options and pricing.</p>
+      <div class="filters" id="filters" hidden>
+        <label for="query">Search products
+          <input id="query" type="search" placeholder="Try canvas or hoodie" autocomplete="off" aria-controls="product-list">
+        </label>
+        <label for="category">Category
+          <select id="category" aria-controls="product-list">
+            <option value="">All categories</option>
+            <option value="shoes">Shoes</option>
+            <option value="hoodies">Hoodies</option>
+            <option value="tees">T-shirts</option>
+            <option value="jackets">Jackets</option>
+          </select>
+        </label>
+      </div>
+      <p class="results" id="results" role="status" hidden></p>
+      <div class="catalog" id="product-list">
+        <article class="card" data-category="shoes">
+          <p class="category">Shoes · Item 148188</p>
+          <h3>Black Canvas Low-Top Sneakers with Gum Sole</h3>
+          <p class="price">¥450.00</p>
+          <a href="https://hipobuyfind.com/goods-148188.html" aria-label="View the canvas sneakers on HipoBuyFind">View source listing ↗</a>
+        </article>
+        <article class="card" data-category="hoodies">
+          <p class="category">Hoodies · Item 154936</p>
+          <h3>Gray Hooded Hoodie</h3>
+          <p class="price">¥300.00</p>
+          <a href="https://hipobuyfind.com/goods-154936.html" aria-label="View the gray hoodie on HipoBuyFind">View source listing ↗</a>
+        </article>
+        <article class="card" data-category="tees">
+          <p class="category">T-shirts · Item 154920</p>
+          <h3>Graphic Short-Sleeve T-Shirt</h3>
+          <p class="price">¥105.00</p>
+          <a href="https://hipobuyfind.com/goods-154920.html" aria-label="View the graphic T-shirt on HipoBuyFind">View source listing ↗</a>
+        </article>
+        <article class="card" data-category="jackets">
+          <p class="category">Jackets · Item 154851</p>
+          <h3>Hooded Quick-Dry Jacket</h3>
+          <p class="price">¥157.14</p>
+          <a href="https://hipobuyfind.com/goods-154851.html" aria-label="View the quick-dry jacket on HipoBuyFind">View source listing ↗</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="guide" id="checklist" aria-labelledby="checklist-title">
+      <h2 id="checklist-title">What to check before ordering</h2>
+      <ol>
+        <li><strong>Confirm the exact variant.</strong> Open the source listing and match the item, color and size you want. Save the listing link and the selected option together so you can compare them later.</li>
+        <li><strong>Use measurements.</strong> For sneakers, check which length the seller’s chart refers to. For clothing, compare the listed measurements with a garment you own and measure both the same way.</li>
+        <li><strong>Review quality-control photos.</strong> If your agent provides QC photos, look at the received item’s labels, stitching, closures and any measurements you requested. Check the return window before approving shipment.</li>
+        <li><strong>Estimate the delivered total.</strong> Add the item price, domestic delivery, applicable agent or payment fees, international shipping and any import charges you expect. Use a shipping quote for your destination and confirm whether the route uses actual or volumetric weight.</li>
+      </ol>
+    </section>
+
+    <section id="faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">KakoBuy spreadsheet FAQ</h2>
+      <details>
+        <summary>What is a KakoBuy spreadsheet?</summary>
+        <p>A KakoBuy spreadsheet is a directory used to shortlist products before shopping through an agent. The listings on this page come from HipoBuyFind, and both main buttons open its catalog.</p>
+      </details>
+      <details>
+        <summary>Can I use a HipoBuyFind listing with KakoBuy?</summary>
+        <p>If the listing provides an original marketplace URL, copy it and check whether KakoBuy accepts that URL and displays your chosen variant. The item ID shown in this catalog identifies the HipoBuyFind listing.</p>
+      </details>
+      <details>
+        <summary>Why might the order cost more than the displayed price?</summary>
+        <p>A different variant can have a different price. Delivery, currency conversion, agent fees and import charges can also affect the total. Confirm the current item price and get a shipping estimate before placing an order.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <p>Independent shopping guide. Catalog listings and reference prices are sourced from <a href="https://hipobuyfind.com/">HipoBuyFind</a>.</p>
+  </footer>
+
+  <script>
+    (() => {
+      const filters = document.getElementById("filters");
+      const query = document.getElementById("query");
+      const category = document.getElementById("category");
+      const results = document.getElementById("results");
+      const cards = Array.from(document.querySelectorAll("#product-list .card"));
+
+      function updateResults() {
+        const terms = query.value.toLowerCase().trim().split(/\s+/).filter(Boolean);
+        let count = 0;
+
+        for (const card of cards) {
+          const text = card.textContent.toLowerCase();
+          const matchesCategory = !category.value || card.dataset.category === category.value;
+          const matchesQuery = terms.every(term => text.includes(term));
+          card.hidden = !(matchesCategory && matchesQuery);
+          if (!card.hidden) count += 1;
+        }
+
+        results.textContent = count
+          ? `Showing ${count} of ${cards.length} listings.`
+          : "No matching listings. Try another search or choose All categories.";
+      }
+
+      query.addEventListener("input", updateResults);
+      category.addEventListener("change", updateResults);
+      filters.hidden = false;
+      results.hidden = false;
+      updateResults();
+    })();
+  </script>
+</body>
+</html>
